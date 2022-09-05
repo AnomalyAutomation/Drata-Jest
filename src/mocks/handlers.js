@@ -4,7 +4,6 @@ export const handlers = [
     "https://api.github.com/users/AnomalyAutomation",
     (req, res, ctx) => {
       return res(
-        //ctx.status(400),
         ctx.json([
           {
             login: "AnomalyAutomation",
