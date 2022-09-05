@@ -52,8 +52,20 @@ export const handlers = [
       );
     }
   ),
+  rest.get("https://api.github.com/users/undefined", (req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json([
+        {
+          message: "Not Found",
+          documentation_url: "https://docs.github.com/rest",
+        },
+      ])
+    );
+  }),
   rest.get("https://api.github.com/users", (req, res, ctx) => {
     const productIds = req.url.searchParams.getAll("since", "per_page");
+    console.log(productIds);
     return res(
       ctx.json([
         {

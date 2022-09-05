@@ -1,6 +1,6 @@
 const config = {
   verbose: true,
-  testEnvironment: {url: "https://api.github.com"},
+  testEnvironment: "node",
 };
 
 module.exports = config;

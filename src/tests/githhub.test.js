@@ -13,12 +13,25 @@ describe("User Object", () => {
     });
   });
 
-  it("#getshould load user data", () => {
+  it("#getUser: undefined User Argument", () => {
+    return github.getUser().then((data) => {
+      expect(data).toBeDefined();
+      expect(data.status.code).toEqual(404);
+      expect(data.entity[0].message).toEqual("Not Found");
+    });
+  });
+
+  it("#getUsersSince: Amount per Page", () => {
     return github.getUsersSince(53061651, 10).then((data) => {
-      let arr = data.entity.length;
-      console.log(arr);
       expect(data).toBeDefined();
       expect(data.entity).toHaveLength(10);
+    });
+  });
+
+  it("#getUsersSince: Returns starting with User AFTER entered ID", () => {
+    return github.getUsersSince(53061650, 10).then((data) => {
+      expect(data).toBeDefined();
+      expect(data.entity[0].id).toEqual(53061651);
     });
   });
 });
