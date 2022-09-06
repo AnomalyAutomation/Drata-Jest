@@ -1,0 +1,20 @@
+name: Drata Remote
+
+on:
+  #push:
+  #branches:
+  #- '**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # You fetch the current ref
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install modules
+        run: yarn
+      - name: Run tests
+        run: yarn test

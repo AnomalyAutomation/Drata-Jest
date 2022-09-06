@@ -2,7 +2,7 @@ import {getUser, getUsersSince} from "../api/github";
 describe("User Object", () => {
   //Contains expected Properties - Test for all Keys that come back
   describe("#getUser", () => {
-    // Assumption test per Assessment
+    // Assumption/Data test per Assessment
     it("Should load user data: Name", async () => {
       // given:
       const user = "AnomalyAutomation";
@@ -32,7 +32,7 @@ describe("User Object", () => {
         })
       );
     });
-
+    //Error Test per Assessment
     it("404 ERROR: Undefined User Argument", async () => {
       // given:
       const user = "undefined";
@@ -43,7 +43,7 @@ describe("User Object", () => {
       expect(res.status.code).toEqual(404);
       expect(res.entity[0].message).toEqual("Not Found");
     });
-
+    //Plan test per Assessment
     it("Plan Name should correspond with Plan Package", async () => {
       // given:
       const user = "octocat";
